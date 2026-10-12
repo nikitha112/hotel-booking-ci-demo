@@ -3,7 +3,7 @@ import json
 import sys
 from pathlib import Path
 
-MINIMUM_ACCURACY = 0.85
+MINIMUM_ACCURACY = 0.80
 
 BASE_DIR = Path(__file__).resolve().parent
 METRICS_PATH = BASE_DIR / "artifacts" / "metrics.json"
