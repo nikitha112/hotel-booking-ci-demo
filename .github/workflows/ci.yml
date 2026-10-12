@@ -38,3 +38,13 @@ jobs:
 
       - name: Display model metrics
         run: cat artifacts/metrics.json
+
+      - name: Upload validated ML artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: hotel-booking-ml-artifacts
+          path: |
+            artifacts/hotel_booking_model.pkl
+            artifacts/metrics.json
+          if-no-files-found: error
+          retention-days: 7
