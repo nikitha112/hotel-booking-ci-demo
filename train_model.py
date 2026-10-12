@@ -13,7 +13,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 BASE_DIR = Path(__file__).resolve().parent
-DATA_PATH = BASE_DIR / "hotel(2).csv"
+DATA_PATH = BASE_DIR / "hotel.csv"
 OUTPUT_DIR = BASE_DIR / "artifacts"
 OUTPUT_DIR.mkdir(exist_ok=True)
 
