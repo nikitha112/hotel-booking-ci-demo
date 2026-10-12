@@ -1,18 +1,30 @@
 
-def predict_booking_status(lead_time, special_requests):
-    """
-    Demonstration rule for the hotel booking CI practical.
-    This is a rule-based example, not a trained ML model.
-    """
-    if lead_time < 0 or special_requests < 0:
-        raise ValueError("Booking features cannot be negative")
+import unittest
+from hotel_logic import predict_booking_status
 
-    if lead_time <= 7 and special_requests > 0:
-        return "Not_Canceled"
-    else:
-        return "Canceled"
+
+class TestHotelLogic(unittest.TestCase):
+
+    def test_recent_booking_with_requests(self):
+        self.assertEqual(
+            predict_booking_status(5, 2),
+            "Not_Canceled"
+        )
+
+    def test_long_lead_time(self):
+        self.assertEqual(
+            predict_booking_status(30, 1),
+            "Canceled"
+        )
+
+    def test_negative_lead_time(self):
+        with self.assertRaises(ValueError):
+            predict_booking_status(-1, 1)
+
+    def test_negative_special_requests(self):
+        with self.assertRaises(ValueError):
+            predict_booking_status(5, -1)
 
 
 if __name__ == "__main__":
-    result = predict_booking_status(5, 2)
-    print("Predicted Booking Status:", result)
+    unittest.main()
